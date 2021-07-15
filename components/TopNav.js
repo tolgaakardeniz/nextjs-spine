@@ -7,7 +7,6 @@ export const TopNav = () => {
     <nav className="d-flex flex-row w-100 p-2 bg-dark">
       <ul className="list-group list-group-flush list-group-horizontal align-items-center">
         <li className="list-group-item bg-transparent border-0">
-          {/* <a href="/">Home</a> */}
           <Link href="/">
             <a>Home</a>
           </Link>
