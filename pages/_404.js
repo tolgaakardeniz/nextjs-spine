@@ -1,6 +1,6 @@
 /* import Head from "next/head";
 
-import BootstrapStyles from "bootstrap/dist/css/bootstrap.min.css";
+
 import HomeStyles from "../styles/Home.module.css";
 
 export default function NotFound() {

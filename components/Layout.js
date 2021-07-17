@@ -1,24 +1,23 @@
 import React from "react";
 import { TopNav } from "./TopNav";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 export const Layout = ({ children }) => {
   return (
-    <>
-      <div className="fullHeight">
+    <div className="h-screen">
+      <div className="flex flex-col h-full">
         <TopNav />
 
-        <main className="d-flex h-100 justify-content-center align-items-center flex-wrap">
+        <main className="flex-grow flex flex-col flex-wrap justify-center items-center">
           {children}
         </main>
       </div>
+    </div>
 
-      <style jsx>{`
+    /*       <style jsx>{`
         .fullHeight {
           min-height: 100vh;
           height: 100vh;
         }
-      `}</style>
-    </>
+      `}</style> */
   );
 };

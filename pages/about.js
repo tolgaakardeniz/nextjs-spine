@@ -6,7 +6,7 @@ export default function About() {
       <Head>
         <title>About Us</title>
       </Head>
-      <div className="text-center">Abaut</div>
+      <div>About</div>
     </>
   );
 }

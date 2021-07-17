@@ -1,9 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 
-import { PostList } from "../components/PostList";
-
-export default function Home({ getPosts }) {
+export default function Home() {
   return (
     <div>
       <Head>
@@ -12,21 +10,7 @@ export default function Home({ getPosts }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <PostList getPosts={getPosts} />
+      <div>Home</div>
     </div>
   );
 }
-
-export const getStaticProps = async () => {
-  const getResult = await fetch(
-    "https://jsonplaceholder.typicode.com/posts?_limit=5"
-  );
-
-  const getPosts = await getResult.json();
-
-  return {
-    props: {
-      getPosts,
-    },
-  };
-};

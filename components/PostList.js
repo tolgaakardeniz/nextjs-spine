@@ -1,7 +1,7 @@
 import React from "react";
 import { Post } from "./Post";
 
-export const PostList = ({ getPosts }) => {
+export const PostList = ({ getPosts, getCount }) => {
   let checkedPosts = [];
 
   try {
@@ -15,18 +15,20 @@ export const PostList = ({ getPosts }) => {
     console.log(e);
   }
 
-  console.log(typeof getPosts === "object");
-  console.log(typeof checkedPosts.length);
-
   return (
-    <div>
-      {checkedPosts.length > 0
-        ? checkedPosts.map((getPost) => (
-            <div key={getPost.id}>
-              <Post getPost={getPost} />
-            </div>
-          ))
-        : "Error, cant load posts object..."}
-    </div>
+    <>
+      {checkedPosts.length > 0 ? (
+        checkedPosts.map((getPost) => (
+          <article
+            className="border-2 border-gray-100 p-4 m-2 mt-4 rounded-lg shadow-lg"
+            key={getPost.id}
+          >
+            <Post getPost={getPost} />
+          </article>
+        ))
+      ) : (
+        <div>Error, cant load posts object...</div>
+      )}
+    </>
   );
 };

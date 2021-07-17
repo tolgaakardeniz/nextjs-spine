@@ -1,8 +1,5 @@
 import Head from "next/head";
 
-import BootstrapStyles from "bootstrap/dist/css/bootstrap.min.css";
-import HomeStyles from "../styles/Home.module.css";
-
 function Error({ statusCode }) {
   var message;
 
@@ -17,13 +14,19 @@ function Error({ statusCode }) {
   }
 
   return (
-    <div className={HomeStyles.container}>
+    <>
       <Head>
         <title>Server error {statusCode}</title>
       </Head>
 
-      {message}
-    </div>
+      {statusCode == 404 ? (
+        <div className="flex-grow">
+          <img className="max-h-screen" src="/404.png" />
+        </div>
+      ) : (
+        <div>{message}</div>
+      )}
+    </>
   );
 }
 
