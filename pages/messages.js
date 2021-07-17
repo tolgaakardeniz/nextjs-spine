@@ -1,8 +1,17 @@
 import Head from "next/head";
+/**
+ * Get browser url info
+ */
+import { useRouter } from "next/router";
 
 import { PostList } from "../components/PostList";
 
 export default function Messages({ getPosts, getCount }) {
+  /**
+   * Get browser url information
+   */
+  const router = useRouter();
+
   return (
     <div>
       <Head>
@@ -21,19 +30,19 @@ export default function Messages({ getPosts, getCount }) {
 }
 
 export const getStaticProps = async () => {
-  const getPosts = await fetch(
-    "https://jsonplaceholder.typicode.com/posts?_limit=5"
-  )
-    .then((response) => response.json())
-    .catch((error) => console.log(error));
+  const result = await fetch(
+    "http://localhost:3000/api/messages?limit=50&start=45"
+  ).then((response) => response.json());
 
-  /*   const getPosts = await getResult.json(); */
+  let getPosts = [];
+  let getCount = 0;
 
-  const getCount = await fetch("https://jsonplaceholder.typicode.com/posts")
-    .then((response) => response.json())
-    .catch((error) => console.log(error));
-
-  /*   const getCount = await getCountResult.json(); */
+  if (typeof result["status"] !== "undefined") {
+    if (result["status"] == true) {
+      getPosts = result.messages;
+      getCount = result.totalCount;
+    }
+  }
 
   return {
     props: {

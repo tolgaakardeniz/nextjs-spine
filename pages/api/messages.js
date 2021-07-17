@@ -625,38 +625,43 @@ export default function handler(req, res) {
     statusCode: res.statusCode,
     httpVersion: req.httpVersion,
   };
-  /* 
-  console.log(
-    query,
-    Object.keys(query).find((k) => k === "limit"),
-    Object.keys(query).find((k) => k === "sort")
-  ); */
 
   try {
     if (query["limit"]) {
       var start = 0;
-      var x = 0;
+      var limit = 0;
 
-      response.messages = messages.filter((a) => {
-        if (typeof query["start"] === "number") {
+      if (typeof query["start"] !== "undefined") {
+        let x = [];
+
+        messages.forEach((e) => {
           start++;
-        }
+          if (start >= query["start"] && limit <= query["limit"]) {
+            limit++;
+            if (limit <= query["limit"]) {
+              x.push(e);
+            }
+          }
+        });
 
-        x++;
-        if (x <= query["limit"]) {
-          return true;
-        } else {
-          return false;
-        }
-      });
+        response.messages = x;
+      } else {
+        response.messages = messages.filter((a) => {
+          limit++;
+          if (limit <= query["limit"]) {
+            return true;
+          } else {
+            return false;
+          }
+        });
+      }
 
       response["messageCount"] = response.messages.length;
+      response["totalCount"] = messages.length;
 
       res.status(200).json(response);
     }
   } catch (e) {
-    console.log(e);
-
     response.messages = [];
     response.status = false;
     response.errorCount = 1;
@@ -665,11 +670,3 @@ export default function handler(req, res) {
     res.status(200).json(response);
   }
 }
-
-/* 
-const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
-
-const result = words.filter(word => word.length > 6);
-
-console.log(result);
-// expected output: Array ["exuberant", "destruction", "present"] */
