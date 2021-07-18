@@ -11,7 +11,7 @@ export const Post = ({ getPost }) => {
       <p className="py-9">{getPost.body}</p>
       <div className="text-right">
         <Link href={"/messages/" + getPost.id}>
-          <a className="bg-indigo-700 text-white hover:bg-indigo-900 rounded-full p-3 px-8 mb-1 inline-block shadow-lg">
+          <a className="bg-green-700 text-white hover:bg-indigo-500 rounded-full p-3 px-8 mb-1 inline-block shadow-lg">
             Read More
           </a>
         </Link>

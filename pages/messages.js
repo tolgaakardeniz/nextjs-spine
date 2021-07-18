@@ -51,7 +51,7 @@ Messages.getInitalProps = async (context) => {
 
 export const getStaticProps = async (context) => {
   await new Promise((resolve) => {
-    setTimeout(resolve, 2000);
+    setTimeout(resolve, 700);
   });
 
   const result = await fetch("http://localhost:3000/api/messages?limit=6").then(

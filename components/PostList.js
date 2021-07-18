@@ -20,7 +20,7 @@ export const PostList = ({ getPosts, getCount }) => {
       {checkedPosts.length > 0 ? (
         checkedPosts.map((getPost) => (
           <article
-            className="border-2 border-gray-100 p-4 m-2 mt-4 rounded-lg shadow-lg"
+            className="border-2 border-gray-100 p-4 m-2 mt-7 rounded-lg shadow-lg"
             key={getPost.id}
           >
             <Post getPost={getPost} />
