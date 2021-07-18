@@ -1,8 +1,9 @@
 import Head from "next/head";
 /**
- * Get browser url info
+ * Get browser url information
  */
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 import { PostList } from "../components/PostList";
 
@@ -12,27 +13,50 @@ export default function Messages({ getPosts, getCount }) {
    */
   const router = useRouter();
 
-  return (
-    <div>
-      <Head>
-        <title>Messages</title>
-        <meta name="description" content="Messages" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+  useEffect(() => {
+    console.log(window.location.origin);
+  }, []);
 
-      <PostList getPosts={getPosts} getCount={getCount} />
+  console.log(router.isFallback);
 
-      <br />
-      <br />
-      <br />
-    </div>
-  );
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  } else {
+    return (
+      <div>
+        <Head>
+          <title>Messages</title>
+          <meta name="description" content="Messages" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+
+        <PostList getPosts={getPosts} getCount={getCount} />
+
+        <br />
+        <br />
+        <br />
+      </div>
+    );
+  }
 }
 
-export const getStaticProps = async () => {
-  const result = await fetch(
-    "http://localhost:3000/api/messages?limit=50&start=45"
-  ).then((response) => response.json());
+Messages.getInitalProps = async (context) => {
+  const { req, query, res, asPath, pathname } = context;
+  if (req) {
+    let host = req.headers.host; // will give you localhost:3000
+
+    console.log(host);
+  }
+};
+
+export const getStaticProps = async (context) => {
+  await new Promise((resolve) => {
+    setTimeout(resolve, 2000);
+  });
+
+  const result = await fetch("http://localhost:3000/api/messages?limit=6").then(
+    (response) => response.json()
+  );
 
   let getPosts = [];
   let getCount = 0;

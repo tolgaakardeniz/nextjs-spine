@@ -8,7 +8,7 @@ import { Menu, Transition } from "@headlessui/react";
  */
 import { ChevronDownIcon } from "@heroicons/react/solid";
 /**
- * Get browser url info
+ * Get browser url information
  */
 import { useRouter } from "next/router";
 /**

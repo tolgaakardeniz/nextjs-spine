@@ -32,3 +32,28 @@ export const PostList = ({ getPosts, getCount }) => {
     </>
   );
 };
+
+export const getStaticProps = async (context) => {
+  console.log(context);
+
+  const result = await fetch("http://localhost:3000/api/messages?limit=6").then(
+    (response) => response.json()
+  );
+
+  let getPosts = [];
+  let getCount = 0;
+
+  if (typeof result["status"] !== "undefined") {
+    if (result["status"] == true) {
+      getPosts = result.messages;
+      getCount = result.totalCount;
+    }
+  }
+
+  return {
+    props: {
+      getPosts,
+      getCount,
+    },
+  };
+};
