@@ -655,12 +655,12 @@ export default function handler(req, res) {
           }
         });
       }
-
-      response["messageCount"] = response.messages.length;
-      response["totalCount"] = messages.length;
-
-      res.status(200).json(response);
     }
+
+    response["messageCount"] = response.messages.length;
+    response["totalCount"] = messages.length;
+
+    res.status(200).json(response);
   } catch (e) {
     response.messages = [];
     response.status = false;
