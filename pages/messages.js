@@ -13,20 +13,33 @@ export default function Messages() {
    * Get browser url information
    */
   const router = useRouter();
+  var page = 0;
 
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(page);
   const [postsPerPage] = useState(2);
 
+  var currentTimeout;
+
   useEffect(() => {
+    if (typeof router.query["page"] != "undefined") {
+      page = parseInt(router.query["page"]);
+    }
+
+    if (page > 0) {
+      if (currentPage < 0) {
+        setCurrentPage(1);
+      } else {
+        setCurrentPage(page > 0 ? page - 1 : 0);
+      }
+    }
+
     const fetchPosts = async () => {
       setLoading(true);
       await new Promise((resolve) => {
         setTimeout(resolve, 200);
       });
-
-      /*       console.log(router); */
 
       const result = await fetch(
         window.location.origin +
@@ -59,7 +72,7 @@ export default function Messages() {
     };
 
     fetchPosts();
-  }, [currentPage]);
+  }, [router]);
 
   /*
   if (router.isFallback) {
@@ -85,8 +98,8 @@ export default function Messages() {
               previousLabel={"Previous"}
               nextLabel={"Next"}
               pageCount={posts["totalCount"] / postsPerPage}
-              breakLinkClassName="m-2 p-2 bg-green-600 text-white rounded-full w-10 inline-block text-center hover:bg-green-700"
-              pageLinkClassName="m-2 p-2 bg-green-600 text-white rounded-full w-10 inline-block text-center hover:bg-green-700"
+              breakLinkClassName="m-2 p-2 px-4 bg-green-600 text-white rounded-full inline-block text-center hover:bg-green-700"
+              pageLinkClassName="m-2 p-2 px-4 bg-green-600 text-white rounded-full inline-block text-center hover:bg-green-700"
               previousClassName="m-2 p-2 px-5 bg-green-600 text-white rounded-full inline-block text-center hover:bg-green-700"
               nextClassName="m-2 p-2 px-5 bg-green-600 text-white rounded-full inline-block text-center hover:bg-green-700"
               activeLinkClassName="bg-green-900"

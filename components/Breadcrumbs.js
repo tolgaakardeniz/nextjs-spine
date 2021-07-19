@@ -9,7 +9,6 @@ const convertBreadcrumb = (string) => {
     .replace(/ae/g, "ä")
     .replace(/ue/g, "ü")
     .capitalizeFirstLetter();
-  //.toUpperCase();
 };
 
 const Breadcrumbs = () => {
@@ -17,7 +16,6 @@ const Breadcrumbs = () => {
   const [breadcrumbs, setBreadcrumbs] = useState(null);
 
   useEffect(() => {
-    console.log(router);
     if (router) {
       const linkPath = router.pathname.split("/");
       linkPath.shift();
@@ -55,7 +53,7 @@ const Breadcrumbs = () => {
       <div className="flex items-center">
         <div>
           <Link href="/">
-            <a href="/">Home</a>
+            <a>Home</a>
           </Link>
         </div>
         {breadcrumbs[0].breadcrumb != ""

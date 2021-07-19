@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 /**
  * Get Head Less UI component
  */
@@ -47,6 +47,10 @@ export const TopNav = () => {
   const onClickNavItem = (name) => {
     setActive(name);
   };
+
+  useEffect(() => {
+    onClickNavItem(router.pathname);
+  }, [router]);
 
   return (
     <div className="w-full">
