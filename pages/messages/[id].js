@@ -1,11 +1,14 @@
 import React from "react";
+import { Post } from "../../components/Post";
 
 const PageDetails = ({ getPost }) => {
   return (
-    <div className="text-center">
-      <h1>{getPost.title}</h1>
-      <p>{getPost.body}</p>
-    </div>
+    <article
+      className="border-2 border-gray-100 p-4 m-2 mt-7 rounded-lg shadow-lg"
+      key={getPost.id}
+    >
+      <Post post={getPost} />
+    </article>
   );
 };
 /**

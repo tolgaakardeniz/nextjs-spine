@@ -17,15 +17,26 @@ const Breadcrumbs = () => {
   const [breadcrumbs, setBreadcrumbs] = useState(null);
 
   useEffect(() => {
+    console.log(router);
     if (router) {
       const linkPath = router.pathname.split("/");
       linkPath.shift();
 
       const pathArray = linkPath.map((path, i) => {
-        return {
-          breadcrumb: path,
-          href: "/" + linkPath.slice(0, i + 1).join("/"),
-        };
+        path = path.replace("[", "").replace("]", "");
+        if (typeof router.query[path] != "undefined") {
+          path = router.query[path];
+
+          return {
+            breadcrumb: path,
+            href: "/" + linkPath.slice(0, i).join("/") + "/" + path,
+          };
+        } else {
+          return {
+            breadcrumb: path,
+            href: "/" + linkPath.slice(0, i + 1).join("/"),
+          };
+        }
       });
 
       setBreadcrumbs(pathArray);

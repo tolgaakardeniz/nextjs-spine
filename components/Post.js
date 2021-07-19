@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-export const Post = ({ post }) => {
+export const Post = ({ post, readMore }) => {
   return (
     <>
       <h1 className="font-bold text-4xl text-gray-900 pb-3 block">
@@ -9,13 +9,17 @@ export const Post = ({ post }) => {
       </h1>
       <hr />
       <p className="py-9">{post.body}</p>
-      <div className="text-right">
-        <Link href={"/messages/" + post.id}>
-          <a className="bg-green-600 text-white hover:bg-green-700 rounded-full p-3 px-8 mb-1 inline-block shadow-lg">
-            Read More
-          </a>
-        </Link>
-      </div>
+      {readMore ? (
+        <div className="text-right">
+          <Link href={"/messages/" + post.id}>
+            <a className="bg-green-600 text-white hover:bg-green-700 rounded-full p-3 px-8 mb-1 inline-block shadow-lg">
+              Read More
+            </a>
+          </Link>
+        </div>
+      ) : (
+        ""
+      )}
     </>
   );
 };

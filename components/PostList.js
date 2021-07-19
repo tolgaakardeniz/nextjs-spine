@@ -16,7 +16,7 @@ export const PostList = ({ posts, loading }) => {
               className="border-2 border-gray-100 p-4 m-2 mt-7 rounded-lg shadow-lg"
               key={post.id}
             >
-              <Post post={post} />
+              <Post post={post} readMore={true} />
             </article>
           ))}
         </>

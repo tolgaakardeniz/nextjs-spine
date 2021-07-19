@@ -33,7 +33,7 @@ export default function Messages() {
           "/api/messages?limit=" +
           postsPerPage +
           "&start=" +
-          (currentPage > 1 ? postsPerPage * currentPage : 0)
+          (currentPage >= 1 ? postsPerPage * currentPage : 0)
       )
         .then((result) => {
           if (result.ok) {
@@ -106,11 +106,13 @@ export default function Messages() {
   function handlePageClick({ selected: selectedPage }) {
     setCurrentPage(selectedPage);
 
-    /*     router.push(
+    router.push(
       router.pathname + "/",
-      router.pathname + "/?page=" + selectedPage,
+      selectedPage >= 1
+        ? router.pathname + "/?page=" + (selectedPage + 1)
+        : router.pathname + "/",
       { shallow: true }
-    ); */
+    );
   }
 }
 
