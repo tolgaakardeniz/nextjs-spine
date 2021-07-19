@@ -10,7 +10,7 @@ export const NavItem = ({ href, active, onItemClick, children }) => {
           onClick={() => onItemClick(href)}
           className={`inline-block p-3 rounded ${
             isActive ? "bg-indigo-500 text-white" : "text-indigo-400"
-          } hover:text-white hover:bg-yellow-700`}
+          } hover:text-white hover:bg-green-600`}
         >
           {children}
         </a>

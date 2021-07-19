@@ -13,11 +13,13 @@ export const Layout = ({ children }) => {
       </div>
     </div>
 
-    /*       <style jsx>{`
+    /*
+	<style jsx>{`
         .fullHeight {
           min-height: 100vh;
           height: 100vh;
         }
-      `}</style> */
+      `}</style>
+*/
   );
 };

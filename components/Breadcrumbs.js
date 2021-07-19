@@ -18,7 +18,7 @@ const Breadcrumbs = () => {
 
   useEffect(() => {
     if (router) {
-      const linkPath = router.asPath.split("/");
+      const linkPath = router.pathname.split("/");
       linkPath.shift();
 
       const pathArray = linkPath.map((path, i) => {
@@ -37,7 +37,10 @@ const Breadcrumbs = () => {
   }
 
   return (
-    <nav className="p-2 border-b-2 bg-gray-300" aria-label="breadcrumbs">
+    <nav
+      className="p-2 border-b-2 bg-gray-300 shadow-xl"
+      aria-label="breadcrumbs"
+    >
       <div className="flex items-center">
         <div>
           <Link href="/">

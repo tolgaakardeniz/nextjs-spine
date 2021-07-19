@@ -7,8 +7,37 @@ export const PostList = ({ posts, loading }) => {
     return <Loading isFixed={false} />;
   }
 
-  return (
-    <>
+  if (typeof posts["status"] === "boolean") {
+    if (posts["status"] == true) {
+      return (
+        <>
+          {posts["items"].map((post) => (
+            <article
+              className="border-2 border-gray-100 p-4 m-2 mt-7 rounded-lg shadow-lg"
+              key={post.id}
+            >
+              <Post post={post} />
+            </article>
+          ))}
+        </>
+      );
+    } else {
+      return (
+        <>
+          {posts["errors"].map((e, x) => (
+            <div key={x} className="text-center">
+              {e}
+            </div>
+          ))}
+        </>
+      );
+    }
+  } else {
+    return "";
+  }
+
+  /*   return (
+    <div>
       {typeof posts["status"] === "boolean" ? (
         posts["status"] ? (
           posts["items"].map((post) => (
@@ -29,6 +58,6 @@ export const PostList = ({ posts, loading }) => {
       ) : (
         ""
       )}
-    </>
-  );
+    </div>
+  ); */
 };

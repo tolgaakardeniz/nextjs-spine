@@ -4,6 +4,7 @@ import Head from "next/head";
  */
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import ReactPaginate from "react-paginate";
 
 import { PostList } from "../components/PostList";
 
@@ -13,12 +14,19 @@ export default function Messages() {
    */
   const router = useRouter();
 
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [postsPerPage] = useState(2);
+
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
       await new Promise((resolve) => {
-        setTimeout(resolve, 1700);
+        setTimeout(resolve, 200);
       });
+
+      /*       console.log(router); */
 
       const result = await fetch(
         window.location.origin +
@@ -51,12 +59,7 @@ export default function Messages() {
     };
 
     fetchPosts();
-  }, [router]);
-
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(10);
+  }, [currentPage]);
 
   /*
   if (router.isFallback) {
@@ -73,11 +76,42 @@ export default function Messages() {
 
       <PostList posts={posts} loading={loading} />
 
+      {!loading && posts["totalCount"] > 10 && (
+        <>
+          <br />
+          <div className="flex justify-center items-center">
+            <ReactPaginate
+              containerClassName="flex justify-center items-center"
+              previousLabel={"Previous"}
+              nextLabel={"Next"}
+              pageCount={posts["totalCount"] / postsPerPage}
+              breakLinkClassName="m-2 p-2 bg-green-600 text-white rounded-full w-10 inline-block text-center hover:bg-green-700"
+              pageLinkClassName="m-2 p-2 bg-green-600 text-white rounded-full w-10 inline-block text-center hover:bg-green-700"
+              previousClassName="m-2 p-2 px-5 bg-green-600 text-white rounded-full inline-block text-center hover:bg-green-700"
+              nextClassName="m-2 p-2 px-5 bg-green-600 text-white rounded-full inline-block text-center hover:bg-green-700"
+              activeLinkClassName="bg-green-900"
+              onPageChange={handlePageClick}
+              forcePage={currentPage}
+            />
+          </div>
+        </>
+      )}
+
       <br />
       <br />
       <br />
     </div>
   );
+
+  function handlePageClick({ selected: selectedPage }) {
+    setCurrentPage(selectedPage);
+
+    /*     router.push(
+      router.pathname + "/",
+      router.pathname + "/?page=" + selectedPage,
+      { shallow: true }
+    ); */
+  }
 }
 
 Messages.getInitalProps = async (context) => {
