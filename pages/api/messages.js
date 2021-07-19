@@ -628,15 +628,13 @@ export default function handler(req, res) {
 
   try {
     if (query["limit"]) {
-      var start = 0;
       var limit = 0;
 
       if (typeof query["start"] !== "undefined") {
         let x = [];
 
-        messages.forEach((e) => {
-          start++;
-          if (start >= query["start"] && limit <= query["limit"]) {
+        messages.map((e, start) => {
+          if (start + 1 >= query["start"] && limit <= query["limit"]) {
             limit++;
             if (limit <= query["limit"]) {
               x.push(e);

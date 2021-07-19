@@ -23,6 +23,7 @@ import { Nav } from "./Nav";
  * NavItems component
  */
 import { NavItem } from "./NavItem";
+import Breadcrumbs from "./Breadcrumbs";
 
 export const TopNav = () => {
   const avatarUrl =
@@ -217,6 +218,7 @@ export const TopNav = () => {
           </Menu>
         </div>
       </Nav>
+      <Breadcrumbs />
     </div>
   );
 };

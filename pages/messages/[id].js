@@ -1,8 +1,6 @@
 import React from "react";
 
 const PageDetails = ({ getPost }) => {
-  console.log(getPost);
-
   return (
     <div className="text-center">
       <h1>{getPost.title}</h1>

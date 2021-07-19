@@ -14,10 +14,8 @@ export default function Messages({ getPosts, getCount }) {
   const router = useRouter();
 
   useEffect(() => {
-    console.log(window.location.origin);
-  }, []);
-
-  console.log(router.isFallback);
+    console.log(window.location.origin, router);
+  }, [router]);
 
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -44,8 +42,6 @@ Messages.getInitalProps = async (context) => {
   const { req, query, res, asPath, pathname } = context;
   if (req) {
     let host = req.headers.host; // will give you localhost:3000
-
-    console.log(host);
   }
 };
 
