@@ -10,3 +10,13 @@ export default function About() {
     </>
   );
 }
+
+export const getStaticProps = async (context) => {
+  await new Promise((resolve) => {
+    setTimeout(resolve, 1700);
+  });
+
+  return {
+    props: {},
+  };
+};

@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 export default function handler(req, res) {
-  const messages = [
+  const items = [
     {
       userId: 1,
       id: 1,
@@ -618,7 +618,7 @@ export default function handler(req, res) {
     status: true,
     errorCount: 0,
     errors: [],
-    messages: messages,
+    items: items,
     headers: req.headers,
     method: req.method,
     url: req.url,
@@ -633,7 +633,7 @@ export default function handler(req, res) {
       if (typeof query["start"] !== "undefined") {
         let x = [];
 
-        messages.map((e, start) => {
+        items.map((e, start) => {
           if (start + 1 >= query["start"] && limit <= query["limit"]) {
             limit++;
             if (limit <= query["limit"]) {
@@ -642,9 +642,9 @@ export default function handler(req, res) {
           }
         });
 
-        response.messages = x;
+        response.items = x;
       } else {
-        response.messages = messages.filter((a) => {
+        response.items = items.filter((a) => {
           limit++;
           if (limit <= query["limit"]) {
             return true;
@@ -655,12 +655,13 @@ export default function handler(req, res) {
       }
     }
 
-    response["messageCount"] = response.messages.length;
-    response["totalCount"] = messages.length;
+    response["count"] = response.items.length;
+    response["totalCount"] = items.length;
 
     res.status(200).json(response);
   } catch (e) {
-    response.messages = [];
+    response.items = [];
+    response["count"] = response.items.length;
     response.status = false;
     response.errorCount = 1;
     response.errors = [e.toString()];

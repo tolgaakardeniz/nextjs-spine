@@ -35,7 +35,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      {loading && <Loading />}
+      {loading && <Loading isFixed={true} />}
       <Layout>
         <Component {...pageProps} />
       </Layout>

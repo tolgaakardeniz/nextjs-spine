@@ -8,7 +8,9 @@ const PageDetails = ({ getPost }) => {
     </div>
   );
 };
-
+/**
+ * For server side process
+ */
 export const getServerSideProps = async (context) => {
   const getResult = await fetch(
     `https://jsonplaceholder.typicode.com/posts/${context.params.id}`

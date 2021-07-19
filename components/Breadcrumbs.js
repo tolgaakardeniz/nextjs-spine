@@ -36,8 +36,6 @@ const Breadcrumbs = () => {
     return null;
   }
 
-  console.log(breadcrumbs);
-
   return (
     <nav className="p-2 border-b-2 bg-gray-300" aria-label="breadcrumbs">
       <div className="flex items-center">

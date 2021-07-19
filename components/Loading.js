@@ -1,8 +1,13 @@
 import React from "react";
 
-export const Loading = () => {
+export const Loading = ({ isFixed }) => {
   return (
-    <div className="z-50 fixed h-full w-full flex justify-center items-center bg-white">
+    <div
+      className={
+        (isFixed ? "z-50 fixed " : "") +
+        "h-full w-full flex justify-center items-center bg-white"
+      }
+    >
       <img className="w-20 h-20" src="/loading.svg" />
     </div>
   );
