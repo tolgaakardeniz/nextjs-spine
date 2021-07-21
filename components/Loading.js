@@ -9,7 +9,13 @@ export const Loading = ({ isFixed }) => {
         "flex justify-center items-center dark:bg-gray-900 bg-white"
       }
     >
-      <Image className="w-20 h-20" src="/loading.svg" alt="Loading" />
+      <Image
+        className="w-20 h-20"
+        height="80"
+        width="80"
+        src="/loading.svg"
+        alt="Loading"
+      />
     </div>
   );
 };

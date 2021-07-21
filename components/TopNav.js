@@ -31,7 +31,7 @@ import { NavItem } from "./NavItem";
 import Breadcrumbs from "./Breadcrumbs";
 
 export const TopNav = () => {
-  const avatarUrl = "./avatar.jpg";
+  const avatarUrl = "/images/avatar.jpg";
 
   /**
    * Get browser url information
@@ -82,6 +82,8 @@ export const TopNav = () => {
                       className="rounded-full h-12 border-2 border-purple-400 hover:border-white"
                       src={avatarUrl}
                       alt="User avatar"
+                      width="50"
+                      height="50"
                     />
                   </Menu.Button>
                 </div>
