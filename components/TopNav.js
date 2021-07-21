@@ -31,8 +31,7 @@ import { NavItem } from "./NavItem";
 import Breadcrumbs from "./Breadcrumbs";
 
 export const TopNav = () => {
-  const avatarUrl =
-    "https://pbs.twimg.com/profile_images/1297105833923420162/k6Dm66YR_400x400.jpg";
+  const avatarUrl = "./avatar.jpg";
 
   /**
    * Get browser url information
