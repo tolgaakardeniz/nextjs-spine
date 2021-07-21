@@ -47,7 +47,7 @@ const Breadcrumbs = () => {
 
   return (
     <nav
-      className="p-2 border-b-2 dark:bg-gray-800 bg-white shadow-xl"
+      className="p-2 dark:bg-gray-800 bg-white shadow-xl"
       aria-label="breadcrumbs"
     >
       <div className="flex items-center">

@@ -92,6 +92,45 @@ export default function Messages() {
       {!loading && posts["totalCount"] > 10 && (
         <>
           <br />
+          <br />
+          <br />
+
+          <br />
+          <br />
+          <br />
+
+          <br />
+          <br />
+          <br />
+
+          <br />
+          <br />
+          <br />
+
+          <br />
+          <br />
+          <br />
+
+          <br />
+          <br />
+          <br />
+
+          <br />
+          <br />
+          <br />
+
+          <br />
+          <br />
+          <br />
+
+          <br />
+          <br />
+          <br />
+
+          <br />
+          <br />
+          <br />
+          <br />
           <div className="flex justify-center items-center">
             <ReactPaginate
               containerClassName="flex justify-center items-center"
@@ -107,12 +146,12 @@ export default function Messages() {
               forcePage={currentPage}
             />
           </div>
+
+          <br />
+          <br />
+          <br />
         </>
       )}
-
-      <br />
-      <br />
-      <br />
     </div>
   );
 

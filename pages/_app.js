@@ -6,7 +6,7 @@ import { Router } from "next/router";
 /**
  * useState
  */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Loading } from "../components/Loading";
 
 import { Layout } from "../components/Layout";
@@ -32,6 +32,10 @@ function MyApp({ Component, pageProps }) {
   Router.events.on("routeChangeComplete", (e) => {
     setLoading(false);
   });
+
+  /*   useEffect(() => {
+    document.querySelector("body").classList.add("home");
+  }); */
 
   return (
     <>

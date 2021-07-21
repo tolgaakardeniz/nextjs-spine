@@ -3,7 +3,7 @@ import { TopNav } from "./TopNav";
 
 export const Layout = ({ children }) => {
   return (
-    <div className="h-screen">
+    <div className="h-full dark:bg-gray-800">
       <div className="flex flex-col h-full">
         <TopNav />
 
