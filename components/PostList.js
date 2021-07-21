@@ -13,7 +13,7 @@ export const PostList = ({ posts, loading }) => {
         <>
           {posts["items"].map((post) => (
             <article
-              className="border-2 border-gray-100 p-4 m-2 mt-7 rounded-lg shadow-lg"
+              className="dark:border-gray-900 border-2 border-gray-100 p-4 m-2 mt-7 rounded-lg shadow-lg"
               key={post.id}
             >
               <Post post={post} readMore={true} />

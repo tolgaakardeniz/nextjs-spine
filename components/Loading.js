@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 export const Loading = ({ isFixed }) => {
   return (
@@ -8,7 +9,7 @@ export const Loading = ({ isFixed }) => {
         "flex justify-center items-center dark:bg-gray-900 bg-white"
       }
     >
-      <img className="w-20 h-20" src="/loading.svg" />
+      <Image className="w-20 h-20" src="/loading.svg" alt="Loading" />
     </div>
   );
 };

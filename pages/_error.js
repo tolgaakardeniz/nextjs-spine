@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 
 function Error({ statusCode }) {
   var message;
@@ -21,7 +22,7 @@ function Error({ statusCode }) {
 
       {statusCode == 404 ? (
         <div className="flex-grow">
-          <img className="max-h-screen" src="/404.png" />
+          <Image className="max-h-screen" src="/404.png" alt="404 Not Found" />
         </div>
       ) : (
         <div>{message}</div>

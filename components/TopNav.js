@@ -12,9 +12,14 @@ import { ChevronDownIcon } from "@heroicons/react/solid";
  */
 import { useRouter } from "next/router";
 /**
- * React links component
+ * links component
  */
 import { Link } from "next/link";
+/**
+ * Image component
+ */
+import Image from "next/image";
+
 /**
  * Nav component
  */
@@ -74,9 +79,10 @@ export const TopNav = () => {
               <>
                 <div>
                   <Menu.Button>
-                    <img
+                    <Image
                       className="rounded-full h-12 border-2 border-purple-400 hover:border-white"
                       src={avatarUrl}
+                      alt="User avatar"
                     />
                   </Menu.Button>
                 </div>
@@ -238,7 +244,7 @@ export const TopNav = () => {
  * @returns Svg Icon
  */
 const svgIcons = {
-  EditInactiveIcon: (props) => {
+  EditInactiveIcon: function EditInactiveIcon(props) {
     return (
       <svg
         {...props}
@@ -255,7 +261,7 @@ const svgIcons = {
       </svg>
     );
   },
-  EditActiveIcon: (props) => {
+  EditActiveIcon: function EditActiveIcon(props) {
     return (
       <svg
         {...props}
@@ -272,7 +278,7 @@ const svgIcons = {
       </svg>
     );
   },
-  DuplicateInactiveIcon: (props) => {
+  DuplicateInactiveIcon: function DuplicateInactiveIcon(props) {
     return (
       <svg
         {...props}
@@ -295,7 +301,7 @@ const svgIcons = {
       </svg>
     );
   },
-  DuplicateActiveIcon: (props) => {
+  DuplicateActiveIcon: function DuplicateActiveIcon(props) {
     return (
       <svg
         {...props}
@@ -318,7 +324,7 @@ const svgIcons = {
       </svg>
     );
   },
-  ArchiveInactiveIcon: (props) => {
+  ArchiveInactiveIcon: function ArchiveInactiveIcon(props) {
     return (
       <svg
         {...props}
@@ -348,7 +354,7 @@ const svgIcons = {
       </svg>
     );
   },
-  ArchiveActiveIcon: (props) => {
+  ArchiveActiveIcon: function ArchiveActiveIcon(props) {
     return (
       <svg
         {...props}
@@ -378,7 +384,7 @@ const svgIcons = {
       </svg>
     );
   },
-  MoveInactiveIcon: (props) => {
+  MoveInactiveIcon: function MoveInactiveIcon(props) {
     return (
       <svg
         {...props}
@@ -392,7 +398,7 @@ const svgIcons = {
       </svg>
     );
   },
-  MoveActiveIcon: (props) => {
+  MoveActiveIcon: function MoveActiveIcon(props) {
     return (
       <svg
         {...props}
@@ -406,7 +412,7 @@ const svgIcons = {
       </svg>
     );
   },
-  DeleteInactiveIcon: (props) => {
+  DeleteInactiveIcon: function DeleteInactiveIcon(props) {
     return (
       <svg
         {...props}
@@ -428,7 +434,7 @@ const svgIcons = {
       </svg>
     );
   },
-  DeleteActiveIcon: (props) => {
+  DeleteActiveIcon: function DeleteActiveIcon(props) {
     return (
       <svg
         {...props}

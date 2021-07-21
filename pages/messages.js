@@ -13,8 +13,9 @@ export default function Messages() {
    * Get browser url information
    */
   const router = useRouter();
-  var page = 0;
+  /*   var page = 0; */
 
+  const [page, setPage] = useState(0);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(page);
@@ -23,15 +24,16 @@ export default function Messages() {
   var currentTimeout;
 
   useEffect(() => {
+    var _page = parseInt(router.query["page"]);
     if (typeof router.query["page"] != "undefined") {
-      page = parseInt(router.query["page"]);
+      setPage(_page);
     }
 
-    if (page > 0) {
+    if (_page > 0) {
       if (currentPage < 0) {
         setCurrentPage(1);
       } else {
-        setCurrentPage(page > 0 ? page - 1 : 0);
+        setCurrentPage(_page > 0 ? _page - 1 : 0);
       }
     }
 
@@ -72,7 +74,7 @@ export default function Messages() {
     };
 
     fetchPosts();
-  }, [router]);
+  }, [router, currentPage, postsPerPage]);
 
   /*
   if (router.isFallback) {
@@ -92,56 +94,17 @@ export default function Messages() {
       {!loading && posts["totalCount"] > 10 && (
         <>
           <br />
-          <br />
-          <br />
-
-          <br />
-          <br />
-          <br />
-
-          <br />
-          <br />
-          <br />
-
-          <br />
-          <br />
-          <br />
-
-          <br />
-          <br />
-          <br />
-
-          <br />
-          <br />
-          <br />
-
-          <br />
-          <br />
-          <br />
-
-          <br />
-          <br />
-          <br />
-
-          <br />
-          <br />
-          <br />
-
-          <br />
-          <br />
-          <br />
-          <br />
           <div className="flex justify-center items-center">
             <ReactPaginate
               containerClassName="flex justify-center items-center"
               previousLabel={"Previous"}
               nextLabel={"Next"}
               pageCount={posts["totalCount"] / postsPerPage}
-              breakLinkClassName="m-2 p-2 px-4 bg-green-600 text-white rounded-full inline-block text-center hover:bg-green-700"
-              pageLinkClassName="m-2 p-2 px-4 bg-green-600 text-white rounded-full inline-block text-center hover:bg-green-700"
-              previousClassName="m-2 p-2 px-5 bg-green-600 text-white rounded-full inline-block text-center hover:bg-green-700"
-              nextClassName="m-2 p-2 px-5 bg-green-600 text-white rounded-full inline-block text-center hover:bg-green-700"
-              activeLinkClassName="bg-green-900"
+              breakLinkClassName="m-2 p-2 px-4 bg-green-600 text-white rounded-full inline-block text-center dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-600 dark:hover:text-gray-400 hover:bg-green-700"
+              pageLinkClassName="m-2 p-2 px-4 bg-green-600 text-white rounded-full inline-block text-center dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-600 dark:hover:text-gray-400 hover:bg-green-700"
+              previousClassName="m-2 p-2 px-5 bg-green-600 text-white rounded-full inline-block text-center dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-600 dark:hover:text-gray-400 hover:bg-green-700"
+              nextClassName="m-2 p-2 px-5 bg-green-600 text-white rounded-full inline-block text-center dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-600 dark:hover:text-gray-400 hover:bg-green-700"
+              activeLinkClassName="dark:bg-pink-900 bg-green-900"
               onPageChange={handlePageClick}
               forcePage={currentPage}
             />
