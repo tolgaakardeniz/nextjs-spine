@@ -39,10 +39,10 @@ export default function Messages() {
 
     const fetchPosts = async () => {
       setLoading(true);
-      await new Promise((resolve) => {
+      /*       await new Promise((resolve) => {
         setTimeout(resolve, 200);
       });
-
+ */
       const result = await fetch(
         window.location.origin +
           "/api/messages?limit=" +
