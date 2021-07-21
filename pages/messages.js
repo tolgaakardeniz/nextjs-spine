@@ -74,7 +74,7 @@ export default function Messages() {
     };
 
     fetchPosts();
-  }, [router, currentPage, postsPerPage]);
+  }, [currentPage, postsPerPage]);
 
   /*
   if (router.isFallback) {
