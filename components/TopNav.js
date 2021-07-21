@@ -49,7 +49,10 @@ export const TopNav = () => {
   };
 
   useEffect(() => {
-    onClickNavItem(router.pathname);
+    const linkPath = router.pathname.split("/");
+    linkPath.shift();
+
+    onClickNavItem("/" + linkPath[0]);
   }, [router]);
 
   return (
