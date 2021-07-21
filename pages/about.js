@@ -6,7 +6,7 @@ export default function About() {
       <Head>
         <title>About Us</title>
       </Head>
-      <div className="dark:text-gray-700 text-9xl">Home</div>
+      <div className="dark:text-gray-700 text-9xl">About</div>
     </>
   );
 }
