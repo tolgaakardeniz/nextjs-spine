@@ -4,7 +4,7 @@ import { Post } from "../../components/Post";
 const PageDetails = ({ getPost }) => {
   return (
     <article
-      className="border-2 border-gray-100 p-4 m-2 mt-7 rounded-lg shadow-lg"
+      className="dark:border-gray-900 border-2 border-gray-100 p-4 m-2 mt-7 rounded-lg shadow-lg"
       key={getPost.id}
     >
       <Post post={getPost} />
