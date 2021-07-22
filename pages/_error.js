@@ -22,7 +22,12 @@ function Error({ statusCode }) {
 
       {statusCode == 404 ? (
         <div className="flex-grow">
-          <Image className="max-h-screen" src="/404.png" alt="404 Not Found" />
+          <Image
+            className="max-h-screen"
+            layout="fill"
+            src="/404.png"
+            alt="404 Not Found"
+          />
         </div>
       ) : (
         <div>{message}</div>

@@ -32,6 +32,11 @@ export const getServerSideProps = async (context) => {
       getPost,
     },
   };
+
+  /*       await new Promise((resolve) => {
+        setTimeout(resolve, 200);
+      });
+ */
 };
 
 export default PageDetails;

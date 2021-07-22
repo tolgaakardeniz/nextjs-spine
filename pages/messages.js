@@ -1,3 +1,4 @@
+import { getPageFiles } from "next/dist/next-server/server/get-page-files";
 import Head from "next/head";
 /**
  * Get browser url information
@@ -23,8 +24,9 @@ export default function Messages() {
 
   var currentTimeout;
 
-  useEffect(() => {
+  var getPage = () => {
     var _page = parseInt(router.query["page"]);
+
     if (typeof router.query["page"] != "undefined") {
       setPage(_page);
     }
@@ -37,18 +39,19 @@ export default function Messages() {
       }
     }
 
+    return (
+      postsPerPage +
+      "&start=" +
+      (currentPage >= 1 ? postsPerPage * currentPage : 0)
+    );
+  };
+
+  useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
-      /*       await new Promise((resolve) => {
-        setTimeout(resolve, 200);
-      });
- */
+
       const result = await fetch(
-        window.location.origin +
-          "/api/messages?limit=" +
-          postsPerPage +
-          "&start=" +
-          (currentPage >= 1 ? postsPerPage * currentPage : 0)
+        window.location.origin + "/api/messages?limit=" + getPage()
       )
         .then((result) => {
           if (result.ok) {
@@ -74,7 +77,8 @@ export default function Messages() {
     };
 
     fetchPosts();
-  }, [currentPage, postsPerPage]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router]);
 
   /*
   if (router.isFallback) {
