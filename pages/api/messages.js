@@ -634,7 +634,7 @@ export default function handler(req, res) {
         let x = [];
 
         items.map((e, start) => {
-          if (start + 1 >= query["start"] && limit <= query["limit"]) {
+          if (start + 1 > query["start"] && limit <= query["limit"]) {
             limit++;
             if (limit <= query["limit"]) {
               x.push(e);
